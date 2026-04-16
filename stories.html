@@ -27,6 +27,24 @@
   <input type="text" id="searchInput" placeholder="Search stories...">
 </div>
 
+<div class="search-box">
+  <input type="text" id="search" placeholder="Search stories...">
+</div>
+
+<script>
+const search = document.getElementById("search");
+const cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", e => {
+  const value = e.target.value.toLowerCase();
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(value) ? "block" : "none";
+  });
+});
+</script>
+
 <!-- FILTERS -->
 <div class="filters">
   <button onclick="filterStories('all')">All</button>

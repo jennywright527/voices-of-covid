@@ -1,74 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Kids Version</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Kids Zone</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="kids">
+<body class="kids fade-out">
 
 <nav class="main-nav">
   <div class="nav-container">
-
-    <!-- LOGO / TITLE -->
-    <div class="nav-logo">
-      <a href="index.html">Voices of COVID-19</a>
-    </div>
-
-    <!-- LINKS -->
+    <div class="nav-logo"><a href="index.html">Voices</a></div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="stories.html">Stories</a>
-      <a href="stories-map.html">Map</a>
       <a href="kids.html">Kids</a>
-      <a href="share.html">Share</a>
-      <a href="about.html">About</a>
     </div>
-
   </div>
 </nav>
 
 <header class="kids-hero">
-  <h1>COVID Stories (Simple Version)</h1>
-  <p>A gentle way to understand what happened.</p>
+  <h1>Follow the Story Path 🫧</h1>
+  <p>Click the bubbles to explore stories!</p>
 </header>
 
-<section class="kids-grid">
+<!-- BUBBLE PATH -->
+<div class="bubble-path">
 
-  <div class="kids-card">
-    <h2>What was COVID-19?</h2>
-    <p>A virus that spread around the world and changed daily life.</p>
-  </div>
+  <a href="stories/story1.html" class="bubble">1</a>
+  <a href="stories/story2.html" class="bubble">2</a>
+  <a href="stories/story3.html" class="bubble">3</a>
+  <a href="stories/story4.html" class="bubble">4</a>
 
-  <div class="kids-card">
-    <h2>Why do people share stories?</h2>
-    <p>So we can understand feelings, memories, and history.</p>
-  </div>
-
-  <div class="kids-card">
-    <h2>Is it over?</h2>
-    <p>Life is mostly back to normal, but people still remember.</p>
-  </div>
-
-</section>
+</div>
 
 <footer class="site-footer">
-  <div class="footer-content">
-
-    <p>© 2026 Voices of COVID-19 • Created by Jenny</p>
-
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="stories.html">Stories</a>
-      <a href="stories-map.html">Map</a>
-      <a href="kids.html">Kids</a>
-      <a href="share.html">Share</a>
-      <a href="about.html">About</a>
-    </div>
-
-  </div>
+  <p>© 2026 Voices of COVID-19 • Created by Jenny</p>
 </footer>
-  
+
+<script>
+document.body.classList.remove("fade-out");
+
+// FUN FLOATING BUBBLES
+document.querySelectorAll(".bubble").forEach(b => {
+  b.addEventListener("mouseover", () => {
+    b.style.transform = "scale(1.2)";
+  });
+  b.addEventListener("mouseout", () => {
+    b.style.transform = "scale(1)";
+  });
+});
+</script>
+
 </body>
 </html>

@@ -1,27 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Stories Archive</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.remove("fade-out");
-  });
 
-  document.querySelectorAll("a").forEach(link => {
-    if (link.href && link.href.startsWith(window.location.origin)) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.add("fade-out");
-
-        setTimeout(() => {
-          window.location = this.href;
-        }, 300);
-      });
-    }
-  });
-</script>
 <body>
 
 <!-- SVG SQUIGGLES -->
@@ -46,6 +30,7 @@
         fill="none"/>
 </svg>
 
+<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="stories.html">Stories</a>
@@ -54,32 +39,60 @@
   <a href="kids.html">Kids</a>
 </nav>
 
+<!-- HEADER -->
 <header>
   <h1>Stories Archive</h1>
-  <p>Every story is a piece of living history.</p>
+  <p>Every story here is a preserved piece of lived history from the COVID-19 pandemic.</p>
 </header>
 
-<div class="grid">
+<!-- STORIES GRID -->
+<section class="grid">
 
   <div class="card">
     <h3>“The silence of lockdown”</h3>
-    <p>I remember how quiet everything became...</p>
+    <p>
+      I remember how quiet everything became during lockdown. Streets that were once busy felt completely empty.
+    </p>
     <span class="tag">Isolation • 2020</span>
   </div>
 
   <div class="card">
     <h3>“Losing someone over video call”</h3>
-    <p>I couldn’t be there in person when it mattered most...</p>
+    <p>
+      I couldn’t be there in person when it mattered most. Everything happened through a screen.
+    </p>
     <span class="tag">Grief • 2020</span>
   </div>
 
   <div class="card">
     <h3>“Finding routine again”</h3>
-    <p>Eventually, I learned how to rebuild my daily life...</p>
+    <p>
+      Over time, I slowly rebuilt my daily life and learned how to adapt to a new normal.
+    </p>
     <span class="tag">Recovery • Hope</span>
   </div>
 
-</div>
+</section>
+
+<!-- TRANSITION SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.remove("fade-out");
+
+  document.querySelectorAll("a").forEach(link => {
+    if (link.href && link.href.startsWith(window.location.origin)) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location = this.href;
+        }, 300);
+      });
+    }
+  });
+});
+</script>
 
 </body>
 </html>

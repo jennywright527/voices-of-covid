@@ -1,29 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Share Your Story</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.remove("fade-out");
-  });
 
-  document.querySelectorAll("a").forEach(link => {
-    if (link.href && link.href.startsWith(window.location.origin)) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.add("fade-out");
-
-        setTimeout(() => {
-          window.location = this.href;
-        }, 300);
-      });
-    }
-  });
-</script>
 <body>
- 
+
 <!-- SVG SQUIGGLES -->
 <svg class="squiggle one" viewBox="0 0 200 200">
   <path d="M10,100 C40,10 60,190 100,100 C140,10 160,190 190,100"
@@ -45,7 +29,8 @@
         stroke-width="3"
         fill="none"/>
 </svg>
-  
+
+<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="stories.html">Stories</a>
@@ -54,21 +39,52 @@
   <a href="kids.html">Kids</a>
 </nav>
 
+<!-- HEADER -->
 <header>
   <h1>Share Your Story</h1>
-  <p>Your experience becomes part of this archive.</p>
+  <p>Your experience becomes part of this living archive.</p>
 </header>
 
-<div class="grid">
+<!-- CONTENT -->
+<section class="grid">
+
   <div class="card">
     <h3>Submit Your Story</h3>
-    <p>We would love to hear your experience.</p>
+    <p>
+      We would love to hear your experience during the COVID-19 pandemic.
+      Your voice helps preserve this history.
+    </p>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSccgr6QRy6oaJlRwSAB8m8lrppjIhurqOFvxvS8D94VXD8SJQ/viewform?usp=header" class="tag">
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSccgr6QRy6oaJlRwSAB8m8lrppjIhurqOFvxvS8D94VXD8SJQ/viewform?usp=header"
+      class="button"
+      target="_blank"
+    >
       Open Submission Form →
     </a>
   </div>
-</div>
+
+</section>
+
+<!-- TRANSITION SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.remove("fade-out");
+
+  document.querySelectorAll("a").forEach(link => {
+    if (link.href && link.href.startsWith(window.location.origin)) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location = this.href;
+        }, 300);
+      });
+    }
+  });
+});
+</script>
 
 </body>
 </html>

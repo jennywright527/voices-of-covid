@@ -8,7 +8,7 @@
 }
 
 /* =========================
-   BASE
+   GLOBAL RESET
 ========================= */
 
 * {
@@ -22,9 +22,11 @@ body {
   color: var(--text);
   line-height: 1.6;
 
+  position: relative;
+  overflow-x: hidden;
+
   opacity: 1;
   transition: opacity 0.35s ease;
-  overflow-x: hidden;
 }
 
 body.fade-out {
@@ -32,7 +34,31 @@ body.fade-out {
 }
 
 /* =========================
-   NAVIGATION
+   DRAMATIC BACKGROUND (SOFT + FUN)
+========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 25%, var(--rose), transparent 45%),
+    radial-gradient(circle at 80% 20%, var(--blue), transparent 45%),
+    radial-gradient(circle at 50% 80%, var(--ochre), transparent 50%),
+    radial-gradient(circle at 30% 60%, var(--sage), transparent 55%);
+  opacity: 0.12;
+  z-index: -2;
+  animation: floatBG 18s ease-in-out infinite;
+}
+
+@keyframes floatBG {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(25px,-20px); }
+  100% { transform: translate(0,0); }
+}
+
+/* =========================
+   NAV
 ========================= */
 
 nav {
@@ -55,6 +81,11 @@ nav a {
 
 nav a:hover {
   color: var(--rose);
+}
+
+nav a.active {
+  color: var(--rose);
+  text-decoration: underline;
 }
 
 /* =========================
@@ -88,9 +119,7 @@ header {
 ========================= */
 
 .grid,
-.stats,
-.map-grid,
-.kids-grid {
+.stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
@@ -100,24 +129,22 @@ header {
 }
 
 /* =========================
-   CARDS (MAIN)
+   CARDS
 ========================= */
 
 .card,
 .stat-card,
-.map-card,
-.kids-card {
+.audio-featured {
   background: rgba(255,255,255,0.92);
   border-radius: 14px;
   padding: 18px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.10);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
   border-left: 5px solid var(--sage);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover,
-.stat-card:hover,
-.map-card:hover {
+.stat-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 14px 30px rgba(0,0,0,0.15);
 }
@@ -136,11 +163,6 @@ header {
   color: white;
 }
 
-/* emotion tags */
-.tag.grief { background: var(--rose); }
-.tag.hope { background: var(--ochre); }
-.tag.isolation { background: var(--blue); }
-
 /* =========================
    BUTTONS
 ========================= */
@@ -153,6 +175,7 @@ header {
   text-decoration: none;
   border-radius: 10px;
   font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
   transition: 0.2s ease;
 }
 
@@ -161,7 +184,7 @@ header {
 }
 
 /* =========================
-   STATS (HOMEPAGE DRAMA)
+   STATS ANIMATION
 ========================= */
 
 .stat-card h2 {
@@ -170,11 +193,6 @@ header {
   color: var(--blue);
 }
 
-.stat-card p {
-  margin-top: 6px;
-}
-
-/* pop-in animation */
 .stat-card {
   animation: popIn 0.8s ease forwards;
   opacity: 0;
@@ -207,45 +225,43 @@ header {
 
 .audio-featured {
   text-align: center;
-  padding: 20px;
-  background: rgba(255,255,255,0.85);
-  border-radius: 12px;
   margin-bottom: 20px;
 }
 
-/* waveform */
+/* waveform placeholder */
 .waveform {
   height: 40px;
   margin-top: 10px;
-  background: linear-gradient(90deg, var(--blue), var(--rose), var(--ochre));
   border-radius: 8px;
+  background: linear-gradient(90deg, var(--blue), var(--rose), var(--ochre));
   opacity: 0.6;
-  animation: pulse 1.6s infinite;
 }
 
-.waveform.active {
-  animation: pulse 0.6s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scaleX(1); opacity: 0.4; }
-  50% { transform: scaleX(1.02); opacity: 0.8; }
-  100% { transform: scaleX(1); opacity: 0.4; }
-}
-
-/* content sections */
-.bio, .intro, .transcript {
-  margin-top: 18px;
-  padding: 16px;
-  background: rgba(255,255,255,0.9);
+/* audio bar */
+.audio-bar {
+  width: 100%;
+  height: 6px;
+  background: #ddd;
   border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
 }
 
-/* fade in sections */
+.audio-progress {
+  height: 100%;
+  width: 0%;
+  background: var(--blue);
+  transition: width 0.2s;
+}
+
+/* =========================
+   SECTIONS FADE IN
+========================= */
+
 .fade {
   opacity: 0;
   transform: translateY(18px);
-  transition: 0.7s ease;
+  transition: all 0.7s ease;
 }
 
 .show {
@@ -254,36 +270,47 @@ header {
 }
 
 /* =========================
-   STORY MAP PREVIEW BOX
+   SQUIGGLES (BUG FIX — NO LAYOUT IMPACT)
 ========================= */
 
-#previewBox {
+.squiggle {
   position: fixed;
-  bottom: 18px;
-  left: 18px;
-  background: rgba(0,0,0,0.75);
-  color: white;
-  padding: 12px 14px;
-  border-radius: 10px;
-  max-width: 260px;
-  opacity: 0;
-  transition: 0.3s ease;
+  width: 400px;
+  height: 400px;
+  opacity: 0.08;
+  z-index: -10;
+  pointer-events: none;
+}
+
+.squiggle.one {
+  top: 10%;
+  left: -120px;
+}
+
+.squiggle.two {
+  bottom: 10%;
+  right: -140px;
+}
+
+.squiggle.three {
+  top: 60%;
+  left: 65%;
 }
 
 /* =========================
-   KIDS MODE (BRIGHT + FRIENDLY)
+   KIDS MODE
 ========================= */
 
 body.kids {
   background: #fffdf7;
 }
 
-.kids-card {
-  border-left: 6px solid var(--rose);
+body.kids h1 {
+  color: var(--ochre);
 }
 
-.kids-card:hover {
-  transform: translateY(-6px);
+.kids-card {
+  border-left: 6px solid var(--rose);
 }
 
 /* =========================
@@ -302,130 +329,4 @@ body.kids {
   nav a {
     font-size: 12px;
   }
-
-  .story-content {
-    padding: 20px 15px;
-  }
-}
-
-/* =========================
-   GLOBAL SCROLL REVEAL
-========================= */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.8s ease;
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================
-   ACTIVE NAV HIGHLIGHT
-========================= */
-
-nav a.active {
-  color: var(--rose);
-  text-decoration: underline;
-}
-
-/* =========================
-   SEARCH BAR (STORIES)
-========================= */
-
-.search-box {
-  max-width: 600px;
-  margin: 20px auto;
-  text-align: center;
-}
-
-.search-box input {
-  width: 90%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-}
-
-/* =========================
-   STORY CATEGORY BADGES
-========================= */
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  font-size: 12px;
-  border-radius: 20px;
-  margin-top: 8px;
-}
-
-.badge.grief { background: var(--rose); }
-.badge.hope { background: var(--ochre); }
-.badge.isolation { background: var(--blue); }
-
-/* =========================
-   AUDIO PROGRESS BAR
-========================= */
-
-.audio-bar {
-  width: 100%;
-  height: 6px;
-  background: #ddd;
-  border-radius: 10px;
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-.audio-progress {
-  height: 100%;
-  width: 0%;
-  background: var(--blue);
-  transition: width 0.2s;
-}
-
-/* =========================
-   HOMEPAGE HERO DRAMA
-========================= */
-
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.hero h1 {
-  font-size: 42px;
-}
-
-/* =========================
-   FLOATING BACKGROUND LAYER
-========================= */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 30%, var(--rose), transparent 45%),
-    radial-gradient(circle at 80% 20%, var(--blue), transparent 45%),
-    radial-gradient(circle at 50% 80%, var(--ochre), transparent 45%);
-  opacity: 0.10;
-  z-index: -1;
-  animation: floatBG 18s ease-in-out infinite;
-}
-
-@keyframes floatBG {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(25px,-20px); }
-  100% { transform: translate(0,0); }
-}
-
-/* =========================
-   BUTTON IMPROVEMENT
-========================= */
-
-.button {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }

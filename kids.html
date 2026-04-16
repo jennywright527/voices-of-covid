@@ -1,36 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Kids Page - COVID Stories</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Kids Version</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="kids-mode">
+<body class="kids">
 
-<!-- SOFT SQUIGGLES -->
-<svg class="squiggle one" viewBox="0 0 200 200">
-  <path d="M10,100 C40,10 60,190 100,100 C140,10 160,190 190,100"
-        stroke="#62829F"
-        stroke-width="3"
-        fill="none"/>
-</svg>
-
-<svg class="squiggle two" viewBox="0 0 200 200">
-  <path d="M10,120 C50,0 80,200 120,80 C150,20 170,180 190,90"
-        stroke="#F4C2C2"
-        stroke-width="3"
-        fill="none"/>
-</svg>
-
-<svg class="squiggle three" viewBox="0 0 200 200">
-  <path d="M10,90 C60,200 120,0 190,110"
-        stroke="#E1A95F"
-        stroke-width="3"
-        fill="none"/>
-</svg>
-
-<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="stories.html">Stories</a>
@@ -40,57 +17,29 @@
   <a href="about.html">About</a>
 </nav>
 
-<!-- HEADER -->
-<header>
+<header class="kids-hero">
   <h1>COVID Stories (Simple Version)</h1>
-  <p>A gentle, easy explanation of what COVID-19 was and why people share stories about it.</p>
+  <p>A gentle way to understand what happened.</p>
 </header>
 
-<!-- CONTENT -->
-<section class="grid">
+<section class="kids-grid">
 
-  <div class="card">
-    <h3>What was COVID-19?</h3>
-    <p>
-      COVID-19 was a virus that spread around the world. It changed how people worked, learned, and spent time with others.
-    </p>
+  <div class="kids-card">
+    <h2>What was COVID-19?</h2>
+    <p>A virus that spread around the world and changed daily life.</p>
   </div>
 
-  <div class="card">
-    <h3>Why do people share stories?</h3>
-    <p>
-      People share stories so we can understand history through real experiences and remember what life was like.
-    </p>
+  <div class="kids-card">
+    <h2>Why do people share stories?</h2>
+    <p>So we can understand feelings, memories, and history.</p>
   </div>
 
-  <div class="card">
-    <h3>What did people feel?</h3>
-    <p>
-      Many people felt confused, lonely, or worried — but also found ways to stay connected and help each other.
-    </p>
+  <div class="kids-card">
+    <h2>Is it over?</h2>
+    <p>Life is mostly back to normal, but people still remember.</p>
   </div>
 
 </section>
-
-<!-- TRANSITION SCRIPT -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.remove("fade-out");
-
-  document.querySelectorAll("a").forEach(link => {
-    if (link.href && link.href.startsWith(window.location.origin)) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.add("fade-out");
-
-        setTimeout(() => {
-          window.location = this.href;
-        }, 300);
-      });
-    }
-  });
-});
-</script>
 
 </body>
 </html>

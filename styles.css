@@ -44,3 +44,13 @@ a {
 a:hover {
   color: #2563eb;
 }
+
+main {
+  text-align: center;
+}
+
+main a {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 18px;
+}

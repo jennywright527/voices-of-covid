@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>COVID Timeline</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="fade-out">
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">Voices of COVID-19</a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="stories.html">Stories</a>
+      <a href="stories-map.html">Map</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="kids.html">Kids</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>COVID-19 Timeline</h1>
+  <p>Scroll through the moments that changed the world.</p>
+</header>
+
+<!-- TIMELINE -->
+<div class="timeline">
+
+  <div class="timeline-item">
+    <div class="timeline-content">
+      <h2>Dec 2019</h2>
+      <p>First cases of COVID-19 identified in Wuhan, China.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-content">
+      <h2>March 2020</h2>
+      <p>Global lockdowns begin. Schools and businesses close.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-content">
+      <h2>April 2020</h2>
+      <p>Hospitals overwhelmed. Daily life drastically changes.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-content">
+      <h2>2021</h2>
+      <p>Vaccines roll out worldwide. Hope begins to return.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-content">
+      <h2>2022+</h2>
+      <p>Society adapts. The world continues forward.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.remove("fade-out");
+
+  const items = document.querySelectorAll(".timeline-item");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+      }
+    });
+  });
+
+  items.forEach(item => {
+    observer.observe(item);
+  });
+});
+</script>
+
+</body>
+</html>

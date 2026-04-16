@@ -415,3 +415,59 @@ section:nth-of-type(4) { animation-delay: 0.4s; }
 .filters button:hover {
   background: var(--coral);
 }
+
+/* =========================
+   STORY PAGE LAYOUT
+========================= */
+
+.story-hero img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* MAIN CONTENT */
+.story-content {
+  max-width: 850px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* AUDIO SECTION */
+.audio-featured {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.audio-featured audio {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* BIO BOX */
+.bio {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 5px solid var(--ochre);
+  background: rgba(255,255,255,0.8);
+  border-radius: 10px;
+}
+
+/* INTRO */
+.intro {
+  margin-top: 20px;
+}
+
+/* TRANSCRIPT */
+.transcript {
+  margin-top: 30px;
+  line-height: 1.7;
+  background: rgba(255,255,255,0.6);
+  padding: 20px;
+  border-radius: 12px;
+}

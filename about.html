@@ -1,35 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>About</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body class="fade-out">
 
-<!-- SVG SQUIGGLES -->
+<!-- SQUIGGLES -->
 <svg class="squiggle one" viewBox="0 0 200 200">
   <path d="M10,100 C40,10 60,190 100,100 C140,10 160,190 190,100"
-        stroke="#62829F"
-        stroke-width="3"
-        fill="none"/>
+        stroke="#6FA8DC" stroke-width="3" fill="none"/>
 </svg>
 
-<svg class="squiggle two" viewBox="0 0 200 200">
-  <path d="M10,120 C50,0 80,200 120,80 C150,20 170,180 190,90"
-        stroke="#F4C2C2"
-        stroke-width="3"
-        fill="none"/>
-</svg>
-
-<svg class="squiggle three" viewBox="0 0 200 200">
-  <path d="M10,90 C60,200 120,0 190,110"
-        stroke="#E1A95F"
-        stroke-width="3"
-        fill="none"/>
-</svg>
-
-<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="stories.html">Stories</a>
@@ -38,41 +22,31 @@
   <a href="kids.html">Kids</a>
 </nav>
 
-<!-- HEADER -->
-<header>
+<header class="hero">
   <h1>About This Archive</h1>
+  <p>Preserving lived experiences from the COVID-19 pandemic.</p>
 </header>
 
-<!-- CONTENT -->
-<div class="grid">
+<section class="grid">
   <div class="card">
     <h3>Purpose</h3>
-    <p>This project preserves lived experiences from the COVID-19 pandemic through oral storytelling.</p>
+    <p>This project collects real stories to preserve emotional history, not just facts.</p>
   </div>
 
   <div class="card">
-    <h3>Why it matters</h3>
-    <p>Personal stories help us understand history in a human way.</p>
+    <h3>Why it Matters</h3>
+    <p>History is remembered through people — their voices, emotions, and memories.</p>
   </div>
-</div>
 
-<!-- PAGE TRANSITION SCRIPT (FIXED LOCATION) -->
+  <div class="card">
+    <h3>Your Role</h3>
+    <p>By sharing your story, you become part of this archive.</p>
+  </div>
+</section>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.remove("fade-out");
-
-  document.querySelectorAll("a").forEach(link => {
-    if (link.href && link.href.startsWith(window.location.origin)) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.add("fade-out");
-
-        setTimeout(() => {
-          window.location = this.href;
-        }, 300);
-      });
-    }
-  });
 });
 </script>
 

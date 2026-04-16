@@ -174,3 +174,13 @@ body {
   50% { transform: translateY(-20px) rotate(5deg); }
   100% { transform: translateY(0px) rotate(0deg); }
 }
+
+body {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+/* when page is loading out */
+body.fade-out {
+  opacity: 0;
+}

@@ -1,36 +1,45 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #f6f4f1;
-  color: #2b2b2b;
+  font-family: Arial, sans-serif;
+  background: #fff7ed;
+  color: #1f2937;
   line-height: 1.6;
 }
 
-/* NAV BAR */
+/* NAV */
 nav {
-  background: #2f3e46;
+  background: #7c3aed;
   padding: 15px;
   text-align: center;
 }
 
 nav a {
   color: white;
-  text-decoration: none;
   margin: 0 12px;
+  text-decoration: none;
   font-weight: bold;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #fb7185;
 }
 
-/* PAGE HEADER */
+/* HEADERS */
 header {
   text-align: center;
   padding: 40px 20px 10px;
 }
 
-/* ARCHIVE GRID */
+h1 {
+  color: #fb7185;
+}
+
+/* LINKS */
+a {
+  color: #7c3aed;
+}
+
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -40,30 +49,31 @@ header {
   padding: 0 20px;
 }
 
-/* STORY CARD */
+/* CARDS */
 .card {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(8px);
-  padding: 20px;
+  background: white;
   border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-left: 5px solid #fb7185;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 
+/* TAGS */
 .tag {
   display: inline-block;
   margin-top: 10px;
-  font-size: 12px;
-  background: #e0d6c8;
-  padding: 4px 8px;
+  padding: 5px 10px;
+  background: #f59e0b;
+  color: white;
   border-radius: 6px;
+  font-size: 12px;
 }
-
 body {
   position: relative;
   overflow-x: hidden;

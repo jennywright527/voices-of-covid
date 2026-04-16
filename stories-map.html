@@ -4,14 +4,10 @@
   <meta charset="UTF-8" />
   <title>Story Map</title>
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- GOOGLE MAPS -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 </head>
 
 <body class="fade-out">
 
-<!-- NAV -->
 <nav class="main-nav">
   <div class="nav-container">
     <div class="nav-logo">
@@ -32,44 +28,26 @@
   <p>Explore stories across the world.</p>
 </header>
 
-<div id="map"></div>
+<div class="map-container">
+
+  <!-- BACKGROUND MAP IMAGE -->
+  <img src="images/world-map.png" class="map-image">
+
+  <!-- PINS -->
+  <a href="stories/story1.html" class="map-pin" style="top: 40%; left: 30%;">
+    📍
+  </a>
+
+  <a href="stories/story2.html" class="map-pin" style="top: 35%; left: 55%;">
+    📍
+  </a>
+
+</div>
 
 <script>
-function initMap() {
-  const center = { lat: 20, lng: 0 };
-
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 2,
-    center: center,
-  });
-
-  const stories = [
-    {
-      position: { lat: 40.7128, lng: -74.0060 },
-      title: "New York Story",
-      link: "stories/story1.html"
-    },
-    {
-      position: { lat: 51.5074, lng: -0.1278 },
-      title: "London Story",
-      link: "stories/story2.html"
-    }
-  ];
-
-  stories.forEach(story => {
-    const marker = new google.maps.Marker({
-      position: story.position,
-      map: map,
-      title: story.title
-    });
-
-    marker.addListener("click", () => {
-      window.location.href = story.link;
-    });
-  });
-}
-
-window.onload = initMap;
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.remove("fade-out");
+});
 </script>
 
 </body>

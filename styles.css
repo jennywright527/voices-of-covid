@@ -42,19 +42,17 @@ header {
 
 /* STORY CARD */
 .card {
-  background: white;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-}
-
-.card h3 {
-  margin-top: 0;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .tag {
@@ -131,4 +129,13 @@ body::before {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
   100% { transform: translateY(0px); }
+}
+
+body {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

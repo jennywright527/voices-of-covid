@@ -96,6 +96,10 @@
     <h3>“A moment I’ll never forget”</h3>
 
     <audio id="mainAudio" controls>
+      <div class="visualizer" id="visualizer">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
       <source src="audio/story1.mp3" type="audio/mpeg">
     </audio>
 
@@ -220,6 +224,45 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+  // PARALLAX EFFECT
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".parallax").forEach(el => {
+    let speed = 0.3;
+    el.style.transform = `translateY(${window.scrollY * speed}px)`;
+  });
+});
+
+// REAL AUDIO VISUALIZER
+const audioEl = document.getElementById("mainAudio");
+const bars = document.querySelectorAll("#visualizer span");
+
+if (audioEl) {
+  const ctx = new AudioContext();
+  const src = ctx.createMediaElementSource(audioEl);
+  const analyser = ctx.createAnalyser();
+
+  src.connect(analyser);
+  analyser.connect(ctx.destination);
+
+  analyser.fftSize = 32;
+  const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+  function animate() {
+    analyser.getByteFrequencyData(dataArray);
+
+    bars.forEach((bar, i) => {
+      bar.style.height = (dataArray[i] / 3) + "px";
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  audioEl.addEventListener("play", () => {
+    ctx.resume();
+    animate();
+  });
+}
 </script>
 
 </body>

@@ -132,3 +132,45 @@ body::before {
   50% { transform: translate(20px, -20px); }
   100% { transform: translate(0,0); }
 }
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* soft squiggle layer */
+.squiggle {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  opacity: 0.08;
+  z-index: -1;
+  animation: floatSquiggle 20s ease-in-out infinite;
+}
+
+/* individual squiggles */
+.squiggle.one {
+  top: 10%;
+  left: -100px;
+  transform: rotate(20deg);
+}
+
+.squiggle.two {
+  bottom: 10%;
+  right: -120px;
+  transform: rotate(-15deg);
+  animation-duration: 25s;
+}
+
+.squiggle.three {
+  top: 50%;
+  left: 60%;
+  transform: rotate(10deg);
+  animation-duration: 30s;
+}
+
+@keyframes floatSquiggle {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}

@@ -7,10 +7,13 @@
 </head>
 
 <body>
-  <div id="intro">
-    <h1>Entering Memory...</h1>
-  </div>
-  
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>Entering Memory...</h1>
+</div>
+
+<!-- NAV -->
 <nav>
   <a href="../index.html">Home</a>
   <a href="../stories.html">Stories</a>
@@ -20,6 +23,7 @@
   <a href="../about.html">About</a>
 </nav>
 
+<!-- HERO -->
 <header class="story-hero">
   <img src="../images/story1.jpg" alt="Story image">
 </header>
@@ -32,18 +36,21 @@
   <section class="audio-featured">
     <h2>Listen</h2>
 
-    <audio controls>
+    <audio controls preload="none">
       <source src="../audio/story1.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- WAVEFORM -->
     <div class="waveform"></div>
-    <audio controls autoplay preload="none">
 
+    <!-- PROGRESS BAR -->
     <div class="audio-bar">
       <div class="audio-progress"></div>
     </div>
 
-    <p class="audio-note">The audio is the core of this story.</p>
+    <p class="audio-note">
+      The audio is the core of this story.
+    </p>
   </section>
 
   <!-- BIO -->
@@ -70,26 +77,44 @@
 
 </main>
 
+<!-- SCRIPTS (ALL CLEAN + WORKING) -->
 <script>
+/* AUDIO ELEMENT */
 const audio = document.querySelector("audio");
+
+/* WAVEFORM ANIMATION */
 const waveform = document.querySelector(".waveform");
 
-/* AUDIO STATE EFFECT */
-audio.addEventListener("play", () => waveform.classList.add("active"));
-audio.addEventListener("pause", () => waveform.classList.remove("active"));
+audio.addEventListener("play", () => {
+  waveform.classList.add("active");
+});
 
-/* SIMPLE FADE IN */
+audio.addEventListener("pause", () => {
+  waveform.classList.remove("active");
+});
+
+/* PROGRESS BAR */
+const progress = document.querySelector(".audio-progress");
+
+audio.addEventListener("timeupdate", () => {
+  const percent = (audio.currentTime / audio.duration) * 100;
+  progress.style.width = percent + "%";
+});
+
+/* SCROLL REVEAL */
 const sections = document.querySelectorAll(".bio, .intro, .transcript, .audio-featured");
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("show");
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
   });
 });
 
-sections.forEach(s => {
-  s.classList.add("fade");
-  observer.observe(s);
+sections.forEach(section => {
+  section.classList.add("fade");
+  observer.observe(section);
 });
 </script>
 

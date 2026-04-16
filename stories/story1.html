@@ -8,20 +8,16 @@
 
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="../index.html">Home</a>
-  <a href="../stories.html">← Back to Stories</a>
-  <a href="../share.html">Share</a>
-  <a href="../about.html">About</a>
+  <a href="../stories-map.html">Map</a>
+  <a href="../stories.html">All Stories</a>
 </nav>
 
-<!-- HERO IMAGE -->
 <header class="story-hero">
   <img src="../images/story1.jpg" alt="Story image">
 </header>
 
-<!-- MAIN CONTENT -->
 <main class="story-content">
 
   <h1>The Silence of Lockdown</h1>
@@ -34,80 +30,55 @@
       <source src="../audio/story1.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- WAVEFORM -->
-    <div class="waveform">
-      <span></span><span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
+    <div class="waveform"></div>
 
-    <p class="audio-note">
-      This oral history is the core of this story experience.
-    </p>
+    <p class="audio-note">The audio is the core of this story.</p>
   </section>
 
   <!-- BIO -->
   <section class="bio">
     <h3>About the Speaker</h3>
-    <p>
-      Anonymous participant • Age 42 • Teacher • United States
-    </p>
+    <p>Anonymous participant • Teacher • Age 42</p>
   </section>
 
   <!-- INTRO -->
   <section class="intro">
     <h3>Introduction</h3>
-    <p>
-      This story captures the emotional stillness and uncertainty of early lockdown days.
-    </p>
+    <p>This story captures the emotional stillness of early lockdown.</p>
   </section>
 
   <!-- TRANSCRIPT -->
   <section class="transcript">
-
     <h3>Transcript</h3>
 
-    <p data-start="0">
-      I remember walking outside and everything felt different…
-    </p>
-
-    <p data-start="5">
-      The silence was almost physical.
-    </p>
-
-    <p data-start="10">
-      Days blended together. Time stopped feeling normal.
-    </p>
+    <p>I remember walking outside and everything felt different...</p>
+    <p>The silence was almost physical.</p>
+    <p>Time stopped feeling normal.</p>
 
   </section>
 
 </main>
 
-<!-- SCRIPTS -->
 <script>
 const audio = document.querySelector("audio");
 const waveform = document.querySelector(".waveform");
-const lines = document.querySelectorAll(".transcript p");
 
-/* waveform play/pause */
-audio.addEventListener("play", () => {
-  waveform.classList.add("active");
-});
+/* AUDIO STATE EFFECT */
+audio.addEventListener("play", () => waveform.classList.add("active"));
+audio.addEventListener("pause", () => waveform.classList.remove("active"));
 
-audio.addEventListener("pause", () => {
-  waveform.classList.remove("active");
-});
+/* SIMPLE FADE IN */
+const sections = document.querySelectorAll(".bio, .intro, .transcript, .audio-featured");
 
-/* transcript highlight */
-audio.addEventListener("timeupdate", () => {
-  const time = audio.currentTime;
-
-  lines.forEach(line => {
-    const start = parseFloat(line.dataset.start);
-
-    if (time >= start) {
-      line.classList.add("active-line");
-    }
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("show");
   });
+});
+
+sections.forEach(s => {
+  s.classList.add("fade");
+  observer.observe(s);
 });
 </script>
 

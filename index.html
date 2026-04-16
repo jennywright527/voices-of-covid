@@ -6,28 +6,22 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body class="fade-out">
 
-<!-- SVG SQUIGGLES -->
+<!-- SQUIGGLES -->
 <svg class="squiggle one" viewBox="0 0 200 200">
   <path d="M10,100 C40,10 60,190 100,100 C140,10 160,190 190,100"
-        stroke="#62829F"
-        stroke-width="3"
-        fill="none"/>
+        stroke="#6FA8DC" stroke-width="3" fill="none"/>
 </svg>
 
 <svg class="squiggle two" viewBox="0 0 200 200">
   <path d="M10,120 C50,0 80,200 120,80 C150,20 170,180 190,90"
-        stroke="#F4C2C2"
-        stroke-width="3"
-        fill="none"/>
+        stroke="#FF8A7A" stroke-width="3" fill="none"/>
 </svg>
 
 <svg class="squiggle three" viewBox="0 0 200 200">
   <path d="M10,90 C60,200 120,0 190,110"
-        stroke="#E1A95F"
-        stroke-width="3"
-        fill="none"/>
+        stroke="#F6C453" stroke-width="3" fill="none"/>
 </svg>
 
 <!-- NAV -->
@@ -40,15 +34,15 @@
 </nav>
 
 <!-- HERO -->
-<header class="hero">
-  <h1>Voices of COVID-19</h1>
-
-  <p>
-    A living archive of real stories from the COVID-19 pandemic.
-    Explore memories, voices, and experiences from people around the world.
-  </p>
-
-  <a href="stories.html" class="button">Enter the Archive →</a>
+<header class="hero cinematic-hero">
+  <div class="hero-overlay">
+    <h1>Voices of COVID-19</h1>
+    <p>
+      A living archive of real stories from the pandemic —
+      moments of loss, resilience, and human connection.
+    </p>
+    <a href="stories.html" class="button">Enter the Archive →</a>
+  </div>
 </header>
 
 <!-- STATS -->
@@ -71,28 +65,28 @@
 
 </section>
 
-<!-- SPOTLIGHT -->  
+<!-- CINEMATIC FEATURED STORY -->
 <section class="spotlight cinematic">
 
   <div class="spotlight-overlay">
     <h2>Featured Story</h2>
-
     <h1>“The day everything stopped”</h1>
 
     <p>
-      One moment everything was normal — the next, the world changed.
-      Streets emptied, routines vanished, and uncertainty filled the air.
+      One moment everything was normal —
+      the next, the world changed.
+      Streets emptied. Silence spread. Life paused.
     </p>
 
     <a href="stories.html" class="button">Enter Story →</a>
   </div>
 
 </section>
-  
-<!-- AUDIO -->
+
+<!-- AUDIO EXPERIENCE -->
 <section class="audio-feature">
 
-  <h2>Featured Voice</h2>
+  <h2>Listen to a Voice</h2>
 
   <div class="card">
     <h3>“A moment I’ll never forget”</h3>
@@ -102,40 +96,41 @@
     </audio>
 
     <p>
-      Listen to a real oral history from someone who lived through the pandemic.
+      Real voices preserve memory in a way text never can.
     </p>
   </div>
 
 </section>
-  
-<!-- MAIN NAV CARDS -->
+
+<!-- NAVIGATION CARDS -->
 <div class="grid">
 
   <div class="card">
     <h3>Explore the Archive</h3>
-    <p>Read and listen to real stories from people who lived through the pandemic.</p>
+    <p>Read and listen to stories from people around the world.</p>
     <a href="stories.html">Enter →</a>
   </div>
 
   <div class="card">
     <h3>Share Your Story</h3>
-    <p>Add your experience to this growing oral history archive.</p>
+    <p>Your voice matters. Add your experience to history.</p>
     <a href="share.html">Contribute →</a>
   </div>
 
   <div class="card">
     <h3>About This Project</h3>
-    <p>Learn why this archive exists and how it preserves lived history.</p>
+    <p>Learn why this archive exists.</p>
     <a href="about.html">Learn more →</a>
   </div>
 
 </div>
 
-<!-- PAGE TRANSITION SCRIPT (FIXED LOCATION) -->
+<!-- SCRIPTS -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.remove("fade-out");
 
+  // PAGE TRANSITIONS
   document.querySelectorAll("a").forEach(link => {
     if (link.href && link.href.startsWith(window.location.origin)) {
       link.addEventListener("click", function (e) {
@@ -148,6 +143,29 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  // COUNT-UP ANIMATION
+  const counters = document.querySelectorAll(".count");
+
+  counters.forEach(counter => {
+    const target = +counter.getAttribute("data-target");
+    let count = 0;
+
+    const update = () => {
+      const increment = target / 200;
+
+      if (count < target) {
+        count += increment;
+        counter.innerText = Math.floor(count).toLocaleString();
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target.toLocaleString();
+      }
+    };
+
+    update();
+  });
+
 });
 </script>
 

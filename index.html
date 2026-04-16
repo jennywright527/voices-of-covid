@@ -27,13 +27,10 @@
 <!-- NAV -->
 <nav class="main-nav">
   <div class="nav-container">
-
-    <!-- LOGO / TITLE -->
     <div class="nav-logo">
       <a href="index.html">Voices of COVID-19</a>
     </div>
 
-    <!-- LINKS -->
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="stories.html">Stories</a>
@@ -42,14 +39,13 @@
       <a href="share.html">Share</a>
       <a href="about.html">About</a>
     </div>
-
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero cinematic-hero">
   <div class="hero-overlay">
-    <h1>Voices of COVID-19</h1>
+    <h1 class="typewriter">Voices of COVID-19</h1>
     <p>
       A living archive of real stories from the pandemic —
       moments of loss, resilience, and human connection.
@@ -60,7 +56,6 @@
 
 <!-- STATS -->
 <section class="stats">
-
   <div class="stat-card">
     <h2 class="count" data-target="770000000">0</h2>
     <p>confirmed COVID-19 cases worldwide</p>
@@ -75,12 +70,10 @@
     <h2 class="count" data-target="1000000000">0</h2>
     <p>lives impacted by disruption, isolation, and loss</p>
   </div>
-
 </section>
 
-<!-- CINEMATIC FEATURED STORY -->
+<!-- FEATURED STORY -->
 <section class="spotlight cinematic">
-
   <div class="spotlight-overlay">
     <h2>Featured Story</h2>
     <h1>“The day everything stopped”</h1>
@@ -91,33 +84,49 @@
       Streets emptied. Silence spread. Life paused.
     </p>
 
-    <a href="stories.html" class="button">Enter Story →</a>
+    <a href="stories/story1.html" class="button">Enter Story →</a>
   </div>
-
 </section>
 
 <!-- AUDIO EXPERIENCE -->
 <section class="audio-feature">
-
   <h2>Listen to a Voice</h2>
 
   <div class="card">
     <h3>“A moment I’ll never forget”</h3>
 
-    <audio controls>
-      <source src="story1.mp3" type="audio/mpeg">
+    <audio id="mainAudio" controls>
+      <source src="audio/story1.mp3" type="audio/mpeg">
     </audio>
 
-    <p>
-      Real voices preserve memory in a way text never can.
-    </p>
-  </div>
+    <!-- AUDIO PROGRESS BAR -->
+    <div class="audio-bar">
+      <div class="audio-progress"></div>
+    </div>
 
+    <p>Real voices preserve memory in a way text never can.</p>
+  </div>
+</section>
+
+<!-- MEMORY WALL -->
+<section class="memory-wall">
+  <div class="memory">“I didn’t realize that was the last normal day.”</div>
+  <div class="memory">“We clapped for healthcare workers every night.”</div>
+  <div class="memory">“I never felt so alone.”</div>
+  <div class="memory">“School just… stopped.”</div>
+</section>
+
+<!-- MAP PREVIEW -->
+<section class="spotlight cinematic">
+  <div class="spotlight-overlay">
+    <h2>Global Voices</h2>
+    <p>Explore stories across the world.</p>
+    <a href="stories-map.html" class="button">Open Map →</a>
+  </div>
 </section>
 
 <!-- NAVIGATION CARDS -->
 <div class="grid">
-
   <div class="card">
     <h3>Explore the Archive</h3>
     <p>Read and listen to stories from people around the world.</p>
@@ -135,8 +144,10 @@
     <p>Learn why this archive exists.</p>
     <a href="about.html">Learn more →</a>
   </div>
-
 </div>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="scrollBar"></div>
 
 <!-- SCRIPTS -->
 <script>
@@ -149,26 +160,19 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
         document.body.classList.add("fade-out");
-
-        setTimeout(() => {
-          window.location = this.href;
-        }, 300);
+        setTimeout(() => window.location = this.href, 300);
       });
     }
   });
 
-  // COUNT-UP ANIMATION
-  const counters = document.querySelectorAll(".count");
-
-  counters.forEach(counter => {
-    const target = +counter.getAttribute("data-target");
+  // COUNT-UP
+  document.querySelectorAll(".count").forEach(counter => {
+    const target = +counter.dataset.target;
     let count = 0;
 
     const update = () => {
-      const increment = target / 200;
-
+      count += target / 200;
       if (count < target) {
-        count += increment;
         counter.innerText = Math.floor(count).toLocaleString();
         requestAnimationFrame(update);
       } else {
@@ -177,6 +181,25 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     update();
+  });
+
+  // AUDIO PROGRESS BAR
+  const audio = document.getElementById("mainAudio");
+  const progress = document.querySelector(".audio-progress");
+
+  if (audio) {
+    audio.addEventListener("timeupdate", () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = percent + "%";
+    });
+  }
+
+  // SCROLL PROGRESS BAR
+  window.addEventListener("scroll", () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const percent = (scrollTop / height) * 100;
+    document.getElementById("scrollBar").style.width = percent + "%";
   });
 
 });

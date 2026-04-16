@@ -63,3 +63,19 @@ main a {
 main a:hover {
   background-color: #3e5561;
 }
+
+.button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #2f3e46;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #3e5561;
+}

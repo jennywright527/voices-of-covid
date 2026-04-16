@@ -11,6 +11,7 @@ nav {
   background: #7c3aed;
   padding: 15px;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 nav a {
@@ -31,7 +32,7 @@ header {
 }
 
 h1 {
-  color: #fb7185;
+  color: #7c3aed;
 }
 
 /* LINKS */
@@ -73,13 +74,25 @@ a {
   color: white;
   border-radius: 6px;
   font-size: 12px;
+  opacity: 0.9;
 }
 body {
   position: relative;
   overflow-x: hidden;
 }
 
-/* soft animated gradient base */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff7ed;
+  color: #1f2937;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* sunset gradient glow */
 body::before {
   content: "";
   position: fixed;
@@ -87,65 +100,16 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 20% 20%, #dbeafe, transparent 40%),
-              radial-gradient(circle at 80% 30%, #fef3c7, transparent 40%),
-              radial-gradient(circle at 50% 80%, #e0e7ff, transparent 40%);
-  animation: floatBg 20s ease-in-out infinite;
-  z-index: -2;
-  opacity: 0.6;
-}
-
-@keyframes floatBg {
-  0% { transform: translate(0,0) scale(1); }
-  50% { transform: translate(20px, -20px) scale(1.05); }
-  100% { transform: translate(0,0) scale(1); }
-}
-
-.shape {
-  position: fixed;
-  border-radius: 50%;
-  opacity: 0.15;
+  background: radial-gradient(circle at 20% 30%, #fb7185, transparent 45%),
+              radial-gradient(circle at 80% 20%, #f59e0b, transparent 45%),
+              radial-gradient(circle at 50% 80%, #7c3aed, transparent 45%);
+  opacity: 0.18;
+  animation: floatSunset 18s ease-in-out infinite;
   z-index: -1;
-  animation: floatShape 12s infinite ease-in-out;
 }
 
-.shape.one {
-  width: 200px;
-  height: 200px;
-  background: #60a5fa;
-  top: 10%;
-  left: 5%;
-}
-
-.shape.two {
-  width: 150px;
-  height: 150px;
-  background: #fbbf24;
-  bottom: 15%;
-  right: 10%;
-  animation-duration: 18s;
-}
-
-.shape.three {
-  width: 120px;
-  height: 120px;
-  background: #a78bfa;
-  top: 60%;
-  left: 70%;
-  animation-duration: 15s;
-}
-
-@keyframes floatShape {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
-body {
-  animation: fadeIn 0.8s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes floatSunset {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(20px, -20px); }
+  100% { transform: translate(0,0); }
 }

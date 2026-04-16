@@ -1127,3 +1127,13 @@ section::after {
 .map-pin:hover {
   transform: translate(-50%, -50%) scale(1.4);
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  flex: 1;
+}

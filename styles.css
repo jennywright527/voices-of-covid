@@ -1102,12 +1102,28 @@ section::after {
 }
 
 /* =========================
-   GOOGLE MAP
+   FAKE MAP (NO API)
 ========================= */
 
-#map {
+.map-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.map-image {
   width: 100%;
-  height: 500px;
-  margin-top: 20px;
   border-radius: 12px;
+}
+
+.map-pin {
+  position: absolute;
+  font-size: 24px;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.map-pin:hover {
+  transform: translate(-50%, -50%) scale(1.4);
 }

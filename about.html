@@ -4,29 +4,12 @@
   <title>About</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.remove("fade-out");
-  });
 
-  document.querySelectorAll("a").forEach(link => {
-    if (link.href && link.href.startsWith(window.location.origin)) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.add("fade-out");
-
-        setTimeout(() => {
-          window.location = this.href;
-        }, 300);
-      });
-    }
-  });
-</script>
 <body>
 
 <!-- SVG SQUIGGLES -->
 <svg class="squiggle one" viewBox="0 0 200 200">
-   <path d="M10,100 C40,10 60,190 100,100 C140,10 160,190 190,100"
+  <path d="M10,100 C40,10 60,190 100,100 C140,10 160,190 190,100"
         stroke="#62829F"
         stroke-width="3"
         fill="none"/>
@@ -46,6 +29,7 @@
         fill="none"/>
 </svg>
 
+<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="stories.html">Stories</a>
@@ -54,10 +38,12 @@
   <a href="kids.html">Kids</a>
 </nav>
 
+<!-- HEADER -->
 <header>
   <h1>About This Archive</h1>
 </header>
 
+<!-- CONTENT -->
 <div class="grid">
   <div class="card">
     <h3>Purpose</h3>
@@ -69,6 +55,26 @@
     <p>Personal stories help us understand history in a human way.</p>
   </div>
 </div>
+
+<!-- PAGE TRANSITION SCRIPT (FIXED LOCATION) -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.remove("fade-out");
+
+  document.querySelectorAll("a").forEach(link => {
+    if (link.href && link.href.startsWith(window.location.origin)) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location = this.href;
+        }, 300);
+      });
+    }
+  });
+});
+</script>
 
 </body>
 </html>

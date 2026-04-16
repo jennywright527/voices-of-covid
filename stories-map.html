@@ -1,110 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Story Map</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- GOOGLE MAPS -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 </head>
 
-<body>
+<body class="fade-out">
 
+<!-- NAV -->
 <nav class="main-nav">
   <div class="nav-container">
-
-    <!-- LOGO / TITLE -->
     <div class="nav-logo">
       <a href="index.html">Voices of COVID-19</a>
     </div>
-
-    <!-- LINKS -->
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="stories.html">Stories</a>
       <a href="stories-map.html">Map</a>
+      <a href="timeline.html">Timeline</a>
       <a href="kids.html">Kids</a>
-      <a href="share.html">Share</a>
-      <a href="about.html">About</a>
     </div>
-
   </div>
 </nav>
 
-<header>
-  <h1>Memory Map</h1>
-  <p>Hover to preview, click to enter.</p>
+<header class="hero">
+  <h1>Story Map</h1>
+  <p>Explore stories across the world.</p>
 </header>
 
-<section class="map-grid">
+<div id="map"></div>
 
-  <a class="map-card" href="stories/story1.html" data-preview="Silence, isolation, early lockdown">
-    <h2>Isolation</h2>
-    <p>The silence of lockdown</p>
-  </a>
-
-  <a class="map-card" href="stories/story2.html" data-preview="Grief, hospitals, distance">
-    <h2>Grief</h2>
-    <p>Loss through screens</p>
-  </a>
-
-  <a class="map-card" href="stories/story3.html" data-preview="Recovery, rebuilding life">
-    <h2>Recovery</h2>
-    <p>Finding routine again</p>
-  </a>
-
-</section>
-
-<section class="grid">
-
-  <div class="card reveal">
-    <h3>2020</h3>
-    <p>Global lockdown begins</p>
-  </div>
-
-  <div class="card reveal">
-    <h3>2021</h3>
-    <p>Vaccines introduced worldwide</p>
-  </div>
-
-  <div class="card reveal">
-    <h3>2022+</h3>
-    <p>Long-term recovery begins</p>
-  </div>
-
-</section>
-
-<div id="previewBox"></div>
-
-<footer class="site-footer">
-  <div class="footer-content">
-
-    <p>© 2026 Voices of COVID-19 • Created by Jenny</p>
-
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="stories.html">Stories</a>
-      <a href="stories-map.html">Map</a>
-      <a href="kids.html">Kids</a>
-      <a href="share.html">Share</a>
-      <a href="about.html">About</a>
-    </div>
-
-  </div>
-</footer>
-  
 <script>
-const cards = document.querySelectorAll(".map-card");
-const preview = document.getElementById("previewBox");
+function initMap() {
+  const center = { lat: 20, lng: 0 };
 
-cards.forEach(card => {
-  card.addEventListener("mouseenter", () => {
-    preview.textContent = card.dataset.preview;
-    preview.style.opacity = "1";
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 2,
+    center: center,
   });
 
-  card.addEventListener("mouseleave", () => {
-    preview.style.opacity = "0";
+  const stories = [
+    {
+      position: { lat: 40.7128, lng: -74.0060 },
+      title: "New York Story",
+      link: "stories/story1.html"
+    },
+    {
+      position: { lat: 51.5074, lng: -0.1278 },
+      title: "London Story",
+      link: "stories/story2.html"
+    }
+  ];
+
+  stories.forEach(story => {
+    const marker = new google.maps.Marker({
+      position: story.position,
+      map: map,
+      title: story.title
+    });
+
+    marker.addListener("click", () => {
+      window.location.href = story.link;
+    });
   });
-});
+}
+
+window.onload = initMap;
 </script>
 
 </body>

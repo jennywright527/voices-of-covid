@@ -1023,3 +1023,34 @@ section::after {
   width: 0%;
   z-index: 9999;
 }                                         
+
+/* =========================
+   KIDS BUBBLE PATH
+========================= */
+
+.bubble-path {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 60px;
+  flex-wrap: wrap;
+}
+
+.bubble {
+  width: 80px;
+  height: 80px;
+  background: var(--sky);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.bubble:hover {
+  background: var(--coral);
+}

@@ -65,3 +65,30 @@ header {
   padding: 4px 8px;
   border-radius: 6px;
 }
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* soft animated gradient base */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 20%, #dbeafe, transparent 40%),
+              radial-gradient(circle at 80% 30%, #fef3c7, transparent 40%),
+              radial-gradient(circle at 50% 80%, #e0e7ff, transparent 40%);
+  animation: floatBg 20s ease-in-out infinite;
+  z-index: -2;
+  opacity: 0.6;
+}
+
+@keyframes floatBg {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(20px, -20px) scale(1.05); }
+  100% { transform: translate(0,0) scale(1); }
+}

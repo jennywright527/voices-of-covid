@@ -636,3 +636,16 @@ body.kids {
 .kids-card:hover {
   transform: translateY(-6px);
 }
+
+#previewBox {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: 0.3s;
+  max-width: 300px;
+}

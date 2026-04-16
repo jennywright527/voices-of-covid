@@ -24,10 +24,9 @@
 <!-- MAIN CONTENT -->
 <main class="story-content">
 
-  <!-- TITLE -->
   <h1>The Silence of Lockdown</h1>
 
-  <!-- AUDIO SECTION -->
+  <!-- AUDIO -->
   <section class="audio-featured">
     <h2>Listen</h2>
 
@@ -64,20 +63,53 @@
 
   <!-- TRANSCRIPT -->
   <section class="transcript">
+
     <h3>Transcript</h3>
 
-    <p>
+    <p data-start="0">
       I remember walking outside and everything felt different…
-      the silence was almost physical.
     </p>
 
-    <p>
+    <p data-start="5">
+      The silence was almost physical.
+    </p>
+
+    <p data-start="10">
       Days blended together. Time stopped feeling normal.
     </p>
 
   </section>
 
 </main>
+
+<!-- SCRIPTS -->
+<script>
+const audio = document.querySelector("audio");
+const waveform = document.querySelector(".waveform");
+const lines = document.querySelectorAll(".transcript p");
+
+/* waveform play/pause */
+audio.addEventListener("play", () => {
+  waveform.classList.add("active");
+});
+
+audio.addEventListener("pause", () => {
+  waveform.classList.remove("active");
+});
+
+/* transcript highlight */
+audio.addEventListener("timeupdate", () => {
+  const time = audio.currentTime;
+
+  lines.forEach(line => {
+    const start = parseFloat(line.dataset.start);
+
+    if (time >= start) {
+      line.classList.add("active-line");
+    }
+  });
+});
+</script>
 
 </body>
 </html>

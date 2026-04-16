@@ -471,3 +471,18 @@ section:nth-of-type(4) { animation-delay: 0.4s; }
   padding: 20px;
   border-radius: 12px;
 }
+
+.waveform.active span {
+  animation-play-state: running;
+}
+
+.transcript p {
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.transcript p.active-line {
+  opacity: 1;
+  color: var(--blue);
+  transform: scale(1.02);
+}

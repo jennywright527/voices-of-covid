@@ -13,33 +13,49 @@
   <a href="stories.html">Stories</a>
   <a href="stories-map.html">Map</a>
   <a href="kids.html">Kids</a>
-  <a href="share.html">Share</a>
-  <a href="about.html">About</a>
 </nav>
 
 <header>
-  <h1>Story Map</h1>
-  <p>Click a memory to enter it.</p>
+  <h1>Memory Map</h1>
+  <p>Hover to preview, click to enter.</p>
 </header>
 
 <section class="map-grid">
 
-  <a class="map-card" href="stories/story1.html">
+  <a class="map-card" href="stories/story1.html" data-preview="Silence, isolation, early lockdown">
     <h2>Isolation</h2>
     <p>The silence of lockdown</p>
   </a>
 
-  <a class="map-card" href="stories/story2.html">
+  <a class="map-card" href="stories/story2.html" data-preview="Grief, hospitals, distance">
     <h2>Grief</h2>
     <p>Loss through screens</p>
   </a>
 
-  <a class="map-card" href="stories/story3.html">
+  <a class="map-card" href="stories/story3.html" data-preview="Recovery, rebuilding life">
     <h2>Recovery</h2>
     <p>Finding routine again</p>
   </a>
 
 </section>
+
+<div id="previewBox"></div>
+
+<script>
+const cards = document.querySelectorAll(".map-card");
+const preview = document.getElementById("previewBox");
+
+cards.forEach(card => {
+  card.addEventListener("mouseenter", () => {
+    preview.textContent = card.dataset.preview;
+    preview.style.opacity = "1";
+  });
+
+  card.addEventListener("mouseleave", () => {
+    preview.style.opacity = "0";
+  });
+});
+</script>
 
 </body>
 </html>

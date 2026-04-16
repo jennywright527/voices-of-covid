@@ -276,3 +276,19 @@ body.fade-out {
 .memory:hover {
   transform: translateY(-5px);
 }
+
+body.kids-mode {
+  background: linear-gradient(135deg, #F5F5F0, #EAF4F6, #FFF4E6);
+}
+
+body.kids-mode nav {
+  background: var(--sage);
+}
+
+body.kids-mode .card {
+  border-left: 5px solid var(--ochre);
+}
+
+body.kids-mode h1 {
+  color: var(--blue);
+}

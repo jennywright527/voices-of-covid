@@ -649,3 +649,21 @@ body.kids {
   transition: 0.3s;
   max-width: 300px;
 }
+
+#intro {
+  position: fixed;
+  inset: 0;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  z-index: 9999;
+  animation: fadeOutIntro 2s ease forwards;
+}
+
+@keyframes fadeOutIntro {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}

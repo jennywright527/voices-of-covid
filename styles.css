@@ -92,3 +92,43 @@ body::before {
   50% { transform: translate(20px, -20px) scale(1.05); }
   100% { transform: translate(0,0) scale(1); }
 }
+
+.shape {
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0.15;
+  z-index: -1;
+  animation: floatShape 12s infinite ease-in-out;
+}
+
+.shape.one {
+  width: 200px;
+  height: 200px;
+  background: #60a5fa;
+  top: 10%;
+  left: 5%;
+}
+
+.shape.two {
+  width: 150px;
+  height: 150px;
+  background: #fbbf24;
+  bottom: 15%;
+  right: 10%;
+  animation-duration: 18s;
+}
+
+.shape.three {
+  width: 120px;
+  height: 120px;
+  background: #a78bfa;
+  top: 60%;
+  left: 70%;
+  animation-duration: 15s;
+}
+
+@keyframes floatShape {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
